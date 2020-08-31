@@ -1,0 +1,52 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: JustMangoT <minetuan2@gmail.com>
+Date: Mon, 31 Aug 2020 23:54:27 +0700
+Subject: [PATCH] Remove All Reload command
+
+
+diff --git a/src/main/java/com/destroystokyo/paper/PaperCommand.java b/src/main/java/com/destroystokyo/paper/PaperCommand.java
+index d798de637389cc5d5289a6c75304de307b01f493..f009f8a6791d866bd1a6835e969faa0590176ec0 100644
+--- a/src/main/java/com/destroystokyo/paper/PaperCommand.java
++++ b/src/main/java/com/destroystokyo/paper/PaperCommand.java
+@@ -39,14 +39,14 @@ public class PaperCommand extends Command {
+     public PaperCommand(String name) {
+         super(name);
+         this.description = "Paper related commands";
+-        this.usageMessage = "/paper [heap | entity | reload | version | debug | dumpwaiting | chunkinfo | syncloadinfo | fixlight | dumpitem]";
++        this.usageMessage = "/paper [heap | entity | version | debug | dumpwaiting | chunkinfo | syncloadinfo | fixlight | dumpitem]";
+         this.setPermission("bukkit.command.paper");
+     }
+ 
+     @Override
+     public List<String> tabComplete(CommandSender sender, String alias, String[] args, Location location) throws IllegalArgumentException {
+         if (args.length <= 1)
+-            return getListMatchingLast(args, "heap", "entity", "reload", "version", "debug", "dumpwaiting", "chunkinfo", "syncloadinfo", "fixlight", "dumpitem");
++            return getListMatchingLast(args, "heap", "entity", "version", "debug", "dumpwaiting", "chunkinfo", "syncloadinfo", "fixlight", "dumpitem");
+ 
+         switch (args[0].toLowerCase(Locale.ENGLISH))
+         {
+@@ -132,9 +132,11 @@ public class PaperCommand extends Command {
+             case "entity":
+                 listEntities(sender, args);
+                 break;
++                /* // Sekiei
+             case "reload":
+                 doReload(sender);
+                 break;
++            */
+             case "dumpitem":
+                 doDumpItem(sender);
+                 break;
+diff --git a/src/main/java/org/spigotmc/SpigotConfig.java b/src/main/java/org/spigotmc/SpigotConfig.java
+index e66050b87ace6544636e10123ad0963176e5fdf7..00996e258814c3b3c6f07cf9598f6e07a3c6539b 100644
+--- a/src/main/java/org/spigotmc/SpigotConfig.java
++++ b/src/main/java/org/spigotmc/SpigotConfig.java
+@@ -69,7 +69,7 @@ public class SpigotConfig
+         config.options().copyDefaults( true );
+ 
+         commands = new HashMap<String, Command>();
+-        commands.put( "spigot", new SpigotCommand( "spigot" ) );
++        //commands.put( "spigot", new SpigotCommand( "spigot" ) ); // Sekiei 
+ 
+         version = getInt( "config-version", 12 );
+         set( "config-version", 12 );

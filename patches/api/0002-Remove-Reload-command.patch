@@ -1,0 +1,30 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: JustMangoT <minetuan2@gmail.com>
+Date: Mon, 31 Aug 2020 23:35:56 +0700
+Subject: [PATCH] Remove Reload command
+
+
+diff --git a/src/main/java/org/bukkit/command/defaults/ReloadCommand.java b/src/main/java/org/bukkit/command/defaults/ReloadCommand.java
+index 0c7ba0718de2b93d013968ca0fec34ffd423990f..3361657ee40147d6f09c851865462485f7658d8b 100644
+--- a/src/main/java/org/bukkit/command/defaults/ReloadCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/ReloadCommand.java
+@@ -22,6 +22,7 @@ public class ReloadCommand extends BukkitCommand {
+     public boolean execute(@NotNull CommandSender sender, @NotNull String currentAlias, @NotNull String[] args) { // Paper
+         if (!testPermission(sender)) return true;
+ 
++        /* // Sekiei - Disable
+         // Paper start - Reload permissions.yml & require confirm
+         boolean confirmed = System.getProperty("LetMeReload") != null;
+         if (args.length == 1) {
+@@ -54,6 +55,11 @@ public class ReloadCommand extends BukkitCommand {
+         Bukkit.reload();
+         Command.broadcastCommandMessage(sender, ChatColor.GREEN + "Reload complete.");
+ 
++         */
++
++        // Sekiei start
++        Command.broadcastCommandMessage(sender, ChatColor.RED + "This command is no logger allowed! Please use /restart command instead");
++        // Sekiei stop
+         return true;
+     }
+ 
