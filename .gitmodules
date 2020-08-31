@@ -1,0 +1,8 @@
+[submodule "Tuinity"]
+	path = Tuinity
+	url = https://github.com/Spottedleaf/Tuinity.git
+	branch = master
+[submodule "Sekiei-Launcher"]
+	path = Sekiei-Launcher
+	url = https://github.com/Just-Mango-Studio/Sekiei-Launcher.git
+	branch = master

@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: JustMangoT <minetuan2@gmail.com>
+Date: Mon, 31 Aug 2020 14:53:50 +0700
+Subject: [PATCH] POM-Changes
+
+
+diff --git a/pom.xml b/pom.xml
+index 95a99b7b55a980b9ad81a0d536507cf890464260..1acf1be1882a45571e489e8cead086e798884cca 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -2,19 +2,20 @@
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+     <modelVersion>4.0.0</modelVersion>
++
+     <parent>
+-        <groupId>com.tuinity</groupId>
+-        <artifactId>tuinity-parent</artifactId>
++        <groupId>xyz.studiomango.sekiei</groupId>
++        <artifactId>sekiei-parent</artifactId>
+         <version>dev-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <artifactId>tuinity-api</artifactId>
++    <artifactId>sekiei-api</artifactId>
+     <version>1.16.2-R0.1-SNAPSHOT</version>
+     <packaging>jar</packaging>
+ 
+-    <name>Tuinity-API</name>
+-    <url>https://github.com/Spottedleaf/Tuinity</url>
++    <name>Sekiei-API</name>
++    <url>https://github.com/Just-Mango-Studio/Sekiei</url>
+     <description>An enhanced plugin API for Minecraft servers.</description>
+ 
+     <properties>
