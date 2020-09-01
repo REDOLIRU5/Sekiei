@@ -1,0 +1,21 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: JustMangoT <minetuan2@gmail.com>
+Date: Tue, 1 Sep 2020 08:55:48 +0700
+Subject: [PATCH] Update version fetcher
+
+
+diff --git a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
+index 255bbd6e48b95c70fad02ba692c64c7579496827..dd3d53c9ed701a55d41b808f8b3eb280769a9948 100644
+--- a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
++++ b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
+@@ -24,8 +24,8 @@ public class PaperVersionFetcher implements VersionFetcher {
+     @Nonnull
+     @Override
+     public String getVersionMessage(@Nonnull String serverVersion) {
+-        String[] parts = serverVersion.substring("git-Tuinity-".length()).split("[-\\s]"); // Tuinity
+-        String updateMessage = getUpdateStatusMessage("Spottedleaf/Tuinity", GITHUB_BRANCH_NAME, parts[0]); // Tuinity
++        String[] parts = serverVersion.substring("git-Sekiei-".length()).split("[-\\s]"); // Tuinity // Sekiei
++        String updateMessage = getUpdateStatusMessage("Just-Mango-Studio/Sekiei", GITHUB_BRANCH_NAME, parts[0]); // Tuinity // Sekiei
+         String history = getHistory();
+ 
+         return history != null ? history + "\n" + updateMessage : updateMessage;
