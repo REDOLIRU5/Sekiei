@@ -1,0 +1,91 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: JustMangoT <minetuan2@gmail.com>
+Date: Wed, 2 Sep 2020 20:41:13 +0700
+Subject: [PATCH] Reconstructor ItemStack
+
+
+diff --git a/src/main/java/org/bukkit/inventory/ItemStack.java b/src/main/java/org/bukkit/inventory/ItemStack.java
+index ccd81fca25233c2a9c2a8c3f4dda3053d7b2e723..769ff8b907c57f3c25286e398a5864e82c0e5958 100644
+--- a/src/main/java/org/bukkit/inventory/ItemStack.java
++++ b/src/main/java/org/bukkit/inventory/ItemStack.java
+@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
+ import java.util.LinkedHashMap;
+ import java.util.List; // Paper
+ import java.util.Map;
++import java.util.Arrays; // Sekiei
+ import java.util.Set; // Paper
+ import org.apache.commons.lang.Validate;
+ import org.bukkit.Bukkit;
+@@ -34,6 +35,42 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
+     @Utility
+     protected ItemStack() {}
+ 
++    /**
++     * An item stack with name and lore
++     * <p>
++     * <b>IMPORTANT: An <i>Item</i>Stack is only designed to contain
++     * <i>items</i>. Do not use this class to encapsulate Materials for which
++     * {@link Material#isItem()} returns false.</b>
++     *
++     * @param type item material
++     * @param amount item amount
++     * @param name item name
++     * @param lore item lore
++     */
++    public ItemStack(@NotNull final Material type, @NotNull final String name, @NotNull final String... lore) {
++        this(type, 1);
++        setDisplayName(name);
++        setLore(Arrays.asList(lore));
++    }
++
++    /**
++     * An item stack with amount, name and lore
++     * <p>
++     * <b>IMPORTANT: An <i>Item</i>Stack is only designed to contain
++     * <i>items</i>. Do not use this class to encapsulate Materials for which
++     * {@link Material#isItem()} returns false.</b>
++     *
++     * @param type item material
++     * @param amount item amount
++     * @param name item name
++     * @param lore item lore
++     */
++    public ItemStack(@NotNull final Material type, final int amount, @NotNull final String name, @NotNull final String... lore) {
++        this(type, amount);
++        setDisplayName(name);
++        setLore(Arrays.asList(lore));
++    }
++
+     /**
+      * Defaults stack size to 1, with no extra data.
+      * <p>
+@@ -791,4 +828,29 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
+         return itemMeta.hasItemFlag(flag);
+     }
+     // Paper end
++
++    // Sekiei start
++
++    /**
++     * Get display name of item
++     * 
++     * @return display name of item
++     */
++    @NotNull
++    public String getDisplayName() {
++        ItemMeta itemMeta = getItemMeta();
++        return itemMeta.getDisplayName();
++    }
++
++    /**
++     * Set display name for item
++     * 
++     * @param name Name should be set
++     */
++    public void setDisplayName(@NotNull String name) {
++        ItemMeta itemMeta = getItemMeta();
++        itemMeta.setDisplayName(name);
++        setItemMeta(itemMeta);
++    }
++    // Sekiei end
+ }
